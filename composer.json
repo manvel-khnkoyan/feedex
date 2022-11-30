@@ -2,7 +2,7 @@
     "name": "trebel/feed-exchanger",
     "autoload": {
         "psr-4": {
-            "Trebel\\FeedExchanger\\": "src/"
+            "Manvel\\Feedex\\": "src/"
         }
     },
     "authors": [
