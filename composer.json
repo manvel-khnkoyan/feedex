@@ -1,0 +1,15 @@
+{
+    "name": "trebel/feed-exchanger",
+    "autoload": {
+        "psr-4": {
+            "Trebel\\FeedExchanger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Manvel Khnkoyan",
+            "email": "manvel@trebel.io"
+        }
+    ],
+    "require": {}
+}
