@@ -8,7 +8,7 @@ use Manvel\Feedex\Fields;
 
 $genrePop = new Schemas\Genre([
     'id' => new Fields\GenreId('pop'),
-    'name' => new Fields\GenreId('Pop'),
+    'name' => new Fields\GenreName('Pop'),
 ]);
 
 var_dump($genrePop);

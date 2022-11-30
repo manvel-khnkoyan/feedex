@@ -2,9 +2,9 @@
 
 namespace Manvel\Feedex;
 
-use Manvel\Feedex\Interfasces\SchemProperty;
+use Manvel\Feedex\Interfaces\SchemaProperty;
 
-abstract class Collection implements SchemProperty, Iterator {
+abstract class Collection implements SchemaProperty, Iterator {
     protected const TYPE = '';
     protected $list = [];
     protected $position = 0;

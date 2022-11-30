@@ -2,9 +2,9 @@
 
 namespace Manvel\Feedex;
 
-use Manvel\Feedex\Interfasces\SchemProperty;
+use Manvel\Feedex\Interfaces\SchemaProperty;
 
-abstract class Resource implements SchemProperty {
+abstract class Resource implements SchemaProperty {
     abstract function copyTo(String $path);
     abstract function open();
 

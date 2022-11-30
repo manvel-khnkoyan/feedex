@@ -2,8 +2,8 @@
 
 namespace Manvel\Feedex;
 
-use Manvel\Feedex\Interfasces\SchemProperty;
+use Manvel\Feedex\Interfaces\SchemaProperty;
 
-abstract class Operator implements SchemProperty {
+abstract class Operator implements SchemaProperty {
 
 }

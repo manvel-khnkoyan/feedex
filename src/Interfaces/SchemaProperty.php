@@ -1,7 +1,7 @@
 <?php
 
-namespace Manvel\Feedex\Interfasces;
+namespace Manvel\Feedex\Interfaces;
 
-interface SchemProperty {
+interface SchemaProperty {
     public function validateType($originType) : bool;
 }

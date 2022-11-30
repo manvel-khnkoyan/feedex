@@ -14,7 +14,7 @@ class GenreId extends Field {
             is_string($value) && 
             strlen($value) > 0 && 
             strlen($value) < 255 &&
-            strpos($value, ' ') === false < 255 &&
+            strpos($value, ' ') === false &&
             ctype_lower($value);
     }
 }

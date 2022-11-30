@@ -1,15 +1,9 @@
 {
-    "name": "trebel/feed-exchanger",
+    "name": "manvel/feedex",
     "autoload": {
         "psr-4": {
             "Manvel\\Feedex\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Manvel Khnkoyan",
-            "email": "manvel@trebel.io"
-        }
-    ],
     "require": {}
 }

@@ -2,7 +2,7 @@
 
 namespace Manvel\Feedex\Feeds;
 
-use Trebel\S\Feed;
+
 use Manvel\Feedex\Package;
 
 class XMLFileFeed extends Feed {   

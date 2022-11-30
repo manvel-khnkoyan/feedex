@@ -2,12 +2,12 @@
 
 namespace Manvel\Feedex;
 
-use Manvel\Feedex\Interfasces\SchemProperty;
+use Manvel\Feedex\Interfaces\SchemaProperty;
 
 /*
  * It coukld be eather primitiv eather 
  * non primitiv values */
-abstract class Field implements SchemProperty {
+abstract class Field implements SchemaProperty {
     protected $value;
     protected $allowedOperators = [];
     abstract protected function validate($value): bool;
@@ -26,7 +26,7 @@ abstract class Field implements SchemProperty {
 
     public function set($value) {
         if (!$this->validate($value)) {
-            throw new \Exception("Invalid value: " + print_r($value, true));
+            throw new \Exception("Invalid value: " . print_r($value, true) . " for ".get_class($this));
         }
         $this->value = $value;
     }

@@ -2,9 +2,9 @@
 
 namespace Manvel\Feedex;
 
-use Manvel\Feedex\Interfasces\SchemProperty;
+use Manvel\Feedex\Interfaces\SchemaProperty;
 
-abstract class Schema implements SchemProperty{
+abstract class Schema implements SchemaProperty{
 
     const CREATE = 'Create';
     const UPDATE = 'Update';
@@ -64,18 +64,18 @@ abstract class Schema implements SchemProperty{
                 );
             }
 
-            // check if implemntees SchemProperty
-            if (!($item instanceof SchemProperty)) {
+            // check if implemntees SchemaProperty
+            if (!($item instanceof SchemaProperty)) {
                 throw new \Exception(
-                    "Schema ".get_class($this)." has unknow property: $key. " . 
+                    "Schema ".get_class($this)." property [$key] is invalid" . 
                     "Schema property must be List, Field, Schema, Resource or Operator"
                 );  
             }
 
             // Validate Type
-            if ($item->validateType($schema)) {
+            if (!$item->validateType($schema)) {
                 throw new \Exception(
-                    "Schema ".get_class($this)." has unknow property: $key has invalid value"
+                    "Schema ".get_class($this)." $key should be $schema"
                 ); 
             }
         }
@@ -84,8 +84,8 @@ abstract class Schema implements SchemProperty{
          * On Create should be all attributes */
         if ($this->__type === Schema::CREATE) {
             foreach ($this->__schema as $key => $schema) {
-                if (!isset($input[$key])) {
-                    throw new \Exception("Missing ".get_class($this)." -> [$key] key");
+                if (!isset($properites[$key])) {
+                    throw new \Exception("Missing ".get_class($this)." key [$key]");
                 }
             }
         }
