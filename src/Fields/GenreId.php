@@ -15,6 +15,6 @@ class GenreId extends Field {
             strlen($value) > 0 && 
             strlen($value) < 255 &&
             strpos($value, ' ') === false &&
-            ctype_lower($value);
+            preg_match('/^[0-9a-z_-]+$/', $value);
     }
 }

@@ -10,6 +10,7 @@ abstract class Schema implements SchemaProperty{
     const UPDATE = 'Update';
     const DELETE = 'Delete';
 
+    private $__properties = [];
     protected $__type = null;
 
     public function type() {
@@ -31,6 +32,10 @@ abstract class Schema implements SchemaProperty{
         if (isset($this->__properties[$key])) {
             $this->__properties[$key] = $value;
         }
+    }
+
+    public function __isset($key) {
+        return isset($this->__properties[$key]);
     }
 
     function __construct($properites, $action = Schema::CREATE) {

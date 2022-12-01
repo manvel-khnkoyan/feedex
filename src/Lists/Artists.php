@@ -5,7 +5,7 @@ namespace Manvel\Feedex\Lists;
 use Manvel\Feedex\Collection;
 
 class Artists extends Collection {
-    const TYPE = 'Manvel\Feedex\Schemas\Artist';
+    protected $type = 'Manvel\Feedex\Schemas\Artist';
 
     function __construct(...$arg) {
         parent::__construct(...$arg);

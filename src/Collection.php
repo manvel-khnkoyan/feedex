@@ -4,8 +4,7 @@ namespace Manvel\Feedex;
 
 use Manvel\Feedex\Interfaces\SchemaProperty;
 
-abstract class Collection implements SchemaProperty, Iterator {
-    protected const TYPE = '';
+abstract class Collection implements SchemaProperty, \Iterator {
     protected $list = [];
     protected $position = 0;
 
@@ -16,9 +15,9 @@ abstract class Collection implements SchemaProperty, Iterator {
     public function __construct($list) {
         $this->position = 0;
         foreach ($list as $item) {
-            if (!is_a($item, self::TYPE)) {
+            if (!is_a($item, $this->type)) {
                 throw new \Exception(
-                    "".get_class($this)." has invalid item ".print_r($item, true)
+                    get_class($this)." has invalid item ".print_r($item, true)
                 );
             }
             $this->list[] = $item;
@@ -29,11 +28,11 @@ abstract class Collection implements SchemaProperty, Iterator {
         $this->position = 0;
     }
 
-    public function current() {
+    public function current() : mixed {
         return $this->list[$this->position];
     }
 
-    public function key() {
+    public function key() : mixed {
         return $this->position;
     }
 

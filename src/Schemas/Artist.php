@@ -14,9 +14,9 @@ class Artist extends Schema {
         'name'       => 'Manvel\Feedex\Fields\Title',
         'uniqueName' => 'Manvel\Feedex\Fields\UniqueName',
         'genres'     => 'Manvel\Feedex\List\Genres',
-        'images'     => 'Manvel\Feedex\List\Images<Manvel\Feedex\Schemas\Image>',
+        'images'     => 'Manvel\Feedex\List\Images',
+        'resources'  => 'Manvel\Feedex\List\Resources',
         'metaData'   => 'Manvel\Feedex\Fields\ArtistMeta',
-        'resources'  => 'Manvel\Feedex\List\Resources<Manvel\Feedex\Schemas\Resource>',
         'createdAt'  => 'Manvel\Feedex\Fields\UnixTimestamp'
     ];
 }

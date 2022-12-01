@@ -4,14 +4,34 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Manvel\Feedex\Schemas;
 use Manvel\Feedex\Fields;
+use Manvel\Feedex\Lists;
 
 
+// Genre
 $genrePop = new Schemas\Genre([
     'id' => new Fields\GenreId('pop'),
     'name' => new Fields\GenreName('Pop'),
 ]);
+$genreHip = new Schemas\Genre([
+    'id' => new Fields\GenreId('hip-hop'),
+    'name' => new Fields\GenreName('Hip / Hop'),
+]);
 
-var_dump($genrePop);
+$genres = new Lists\Genres([$genrePop, $genreHip]);
+
+foreach ($genres as $genre) {
+    echo $genre->id->get() . " - ";
+    echo $genre->name . "\n";
+}
+
+
+
+
+
+
+
+// var_dump($genrePop);
+// var_dump($genres);
 
 
 /* 

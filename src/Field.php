@@ -20,6 +20,10 @@ abstract class Field implements SchemaProperty {
         $this->set($value);
     }
 
+    public function __toString() {
+        return $this->value;
+    }
+
     public function get() {
         return $this->value;
     }

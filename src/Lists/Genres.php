@@ -5,6 +5,8 @@ namespace Manvel\Feedex\Lists;
 use Manvel\Feedex\Collection;
 
 class Genres extends Collection {
+    protected $type = 'Manvel\Feedex\Schemas\Genre';
+
     function __construct(...$arg) {
         parent::__construct(...$arg);
     }
