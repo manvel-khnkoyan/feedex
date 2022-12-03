@@ -11,7 +11,7 @@ class Validities extends Collection {
 
     public function validate($item) {
         if (!is_a($item, 'Manvel\Feedex\Schemas\Validity')) {
-            throw new \Exception('Oops, invalid item ['.var_dump($item).'] provided in Validities list');
+            throw new \Exception('Oops, invalid item ['.print_r($item, true).'] provided in Validities list');
         }
     }
 }

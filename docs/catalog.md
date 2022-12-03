@@ -395,20 +395,22 @@ And this example how to push or pull an object into a list:
 
 ```xml
 <xml>
-    <Schema version="1.0">
-        <Track action="Update">
-            <ID>123445</ID>
-            <Territories>
-                <Territory action="push" src="territories.xml" ref="US" />
-            </Territories>
-            <Resources action="Update">
-                <Resource action="Pull">
-                </Resource>
-                <Resource action="Push">
-                </Resource>
-            </Resources>
-        <Track>
-    </Schema>
+    <Package version="1.0" >
+        <Schema action="Update">
+            <Track >
+                <ID>123445</ID>
+                <Territories>
+                    <Territory action="push" src="territories.xml" ref="US" />
+                </Territories>
+                <Resources action="Update">
+                    <Resource action="Pull">
+                    </Resource>
+                    <Resource action="Push">
+                    </Resource>
+                </Resources>
+            <Track>
+        </Schema>
+    </Package>
 </xml>
 ```
 

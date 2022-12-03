@@ -13,7 +13,7 @@ class Artists extends Collection {
 
     public function validate($item) {
         if (!is_a($item, 'Manvel\Feedex\Schemas\Artist')) {
-            throw new \Exception('Oops, invalid item ['.var_dump($item).'] provided in Artist list');
+            throw new \Exception('Oops, invalid item ['.print_r($item, true).'] provided in Artist list');
         }
     }
 }

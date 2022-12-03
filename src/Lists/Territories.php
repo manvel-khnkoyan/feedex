@@ -11,7 +11,7 @@ class Territories extends Collection {
 
     public function validate($item) {
         if (!is_a($item, 'Manvel\Feedex\Schemas\Territoty')) {
-            throw new \Exception('Oops, invalid item ['.var_dump($item).'] provided in Territories list');
+            throw new \Exception('Oops, invalid item ['.print_r($item, true).'] provided in Territories list');
         }
     }
 }

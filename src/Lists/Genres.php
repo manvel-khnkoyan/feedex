@@ -13,7 +13,8 @@ class Genres extends Collection {
 
     public function validate($item) {
         if (!is_a($item, 'Manvel\Feedex\Schemas\Genre')) {
-            throw new \Exception('Oops, invalid item ['.var_dump($item).'] provided in Genres list');
+            throw new \Exception('Oops, invalid item ['.print_r($item, true).'] provided in Genres list');
         }
     }
 }
+

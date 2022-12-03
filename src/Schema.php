@@ -6,17 +6,13 @@ use Manvel\Feedex\Interfaces\SchemaProperty;
 
 abstract class Schema implements SchemaProperty{
 
-    const CREATE = 'Create';
-    const UPDATE = 'Update';
-    const DELETE = 'Delete';
-
     private $__properties = [];
-    protected $__type = null;
-
-    public function type() {
-        return $this->__type;
-    }
+    protected $__completed = null;
     
+    public function completed() {
+        return $this->__completed;
+    }
+
     public function validateType($originType) : bool {
         return is_a($this, $originType);
     }
@@ -38,14 +34,7 @@ abstract class Schema implements SchemaProperty{
         return isset($this->__properties[$key]);
     }
 
-    function __construct($properites, $action = Schema::CREATE) {
-        $this->__type = $action;
-        if (!in_array($action, [Schema::CREATE, Schema::UPDATE, Schema::DELETE])) {
-            throw new \Exception(
-                "Oops, invalid action provided: " . $action
-            );
-        }
-
+    function __construct($properites) {
         // Check ID
         if (!isset($properites['id'])) {
             throw new \Exception(
@@ -86,14 +75,15 @@ abstract class Schema implements SchemaProperty{
         }
 
         /*
-         * On Create should be all attributes */
-        if ($this->__type === Schema::CREATE) {
-            foreach ($this->__schema as $key => $schema) {
-                if (!isset($properites[$key])) {
-                    throw new \Exception("Missing ".get_class($this)." key [$key]");
-                }
+         * See if schema has all the fields */
+        $this->__completed = true;
+        foreach ($this->__schema as $key => $schema) {
+            if (!isset($properites[$key])) {
+                $this->__completed = false;
             }
         }
+
+        echo $properites['id']." : [" . $this->__completed . "]\n";
 
         // If everithing is ok then own Properities
         $this->__properties = $properites;

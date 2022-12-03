@@ -11,7 +11,7 @@ class Images extends Collection {
 
     public function validate($item) {
         if (!is_a($item, 'Manvel\Feedex\Schemas\Image')) {
-            throw new \Exception('Oops, invalid item ['.var_dump($item).'] provided in Image list');
+            throw new \Exception('Oops, invalid item ['.print_r($item, true).'] provided in Image list');
         }
     }
 }

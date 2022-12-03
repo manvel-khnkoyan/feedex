@@ -17,21 +17,17 @@ abstract class Field implements SchemaProperty {
     }
 
     function __construct($value) {
-        $this->set($value);
+        if (!$this->validate($value)) {
+            throw new \Exception("Invalid value: " . print_r($value, true) . " for ".get_class($this));
+        }
+        $this->value = $value;
     }
 
     public function __toString() {
         return $this->value;
     }
 
-    public function get() {
+    public function value() {
         return $this->value;
-    }
-
-    public function set($value) {
-        if (!$this->validate($value)) {
-            throw new \Exception("Invalid value: " . print_r($value, true) . " for ".get_class($this));
-        }
-        $this->value = $value;
     }
 }

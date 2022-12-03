@@ -30,12 +30,12 @@ class Transform extends Operator implements Iterator {
         }
         if (!$this->type) $this->type = $type;
         if (
-            !($item instanceof Field) ||
-            !($item instanceof Schema) ||
+            !($item instanceof Field) &&
+            !($item instanceof Schema) &&
             !($item instanceof Resource)
         ) {
             throw new \Exception(
-                "Transform operator should have only Filed, Schema or Resource types"
+                "Transform operator should have sone of Filed, Schema or Resource types"
             );
         }
     }
@@ -43,29 +43,31 @@ class Transform extends Operator implements Iterator {
     public function push($item) {
         $this->checkItem($item);
         if ($item instanceof Schema) {
-            if ($item->type() !== Schema::CREATE) {
+            if (!$item->completed()) {
                 throw new \Exception(
-                    "Transform operator pull operator can handle only CRTEATE type for " . print_r($item)
+                    "PUSH operator for [" . get_class($item) . "] by id: [".($item->id)."] should be completed"
                 );
             }
         } 
-        return $this->list[] = ['push', $item];
+        $this->list[] = ['push', $item];
+        return $this;
     }
 
     public function pull($item) {
         $this->checkItem($item);
-        return $this->list[] = ['pull', $item];
+        $this->list[] = ['pull', $item];
+        return $this;
     }
 
     public function rewind(): void {
         $this->position = 0;
     }
 
-    public function current() {
+    public function current() : mixed {
         return $this->list[$this->position];
     }
 
-    public function key() {
+    public function key() : mixed {
         return $this->position;
     }
 

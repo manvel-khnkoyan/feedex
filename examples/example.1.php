@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use Manvel\Feedex\Schemas;
 use Manvel\Feedex\Fields;
 use Manvel\Feedex\Lists;
-
+use Manvel\Feedex\Operators;
 
 // Genre
 $genrePop = new Schemas\Genre([
@@ -19,20 +19,27 @@ $genreHip = new Schemas\Genre([
 
 $genres = new Lists\Genres([$genrePop, $genreHip]);
 
-foreach ($genres as $genre) {
-    echo $genre->id->get() . " - ";
-    echo $genre->name . "\n";
+$operator = (new Operators\Transform())
+    ->pull($genrePop)
+    ->push($genreHip)
+    ->pull(
+        new Schemas\Genre([
+            'id' => new Fields\GenreId('top')
+        ])
+    );
+
+foreach ($operator as list($type, $item)) {
+    echo " $type \n ";
+    // var_dump($item);
 }
 
-
-
-
-
-
+foreach ($genres as $genre) {
+    // echo $genre->id . " - ";
+    // echo $genre->name . "\n";
+}
 
 // var_dump($genrePop);
 // var_dump($genres);
-
 
 /* 
 
@@ -73,9 +80,6 @@ $artisUpdateSchema = new Artist([
 ]);
 
 $package = new XMLFilePackage($artisUpdateSchema);
-
-
-
 $xmlFeed->addPackage($package);
 
 var_dump($trackSchema->id);
